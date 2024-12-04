@@ -8,7 +8,8 @@ const UserHoldings = () => {
 
     const fetchHoldings = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/users/${userId}`);
+            const response = await axios.get(`/api/users/find/${userId}`);
+            console.log(response.data);
             setData(response.data);
             setError('');
         } catch {
@@ -29,26 +30,32 @@ const UserHoldings = () => {
             <button onClick={fetchHoldings}>Search</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {data && (
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                        <th>Amount (USD)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data["holdings"].map((h, i) => (
-                        <tr key={i}>
-                            <td>{h["ticker"]}</td>
-                            <td>{h.amount}</td>
-                            <td>{h["price"]}</td>
-                            <td>{h["amountUSD"]}</td>
-                        </tr>
+                <div>
+                    {data["cryptoWallets"]?.map((wallet, walletIndex) => (
+                        <div key={walletIndex}>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Amount</th>
+                                    <th>Price</th>
+                                    <th>Amount (USD)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {wallet["holdings"].map((holding, i) => (
+                                    <tr key={i}>
+                                        <td>{holding["ticker"]}</td>
+                                        <td>{holding["amount"]}</td>
+                                        <td>{holding["price"]}</td>
+                                        <td>{holding["amountUSD"]}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
                     ))}
-                    </tbody>
-                </table>
+                </div>
             )}
         </div>
     );

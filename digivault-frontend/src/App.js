@@ -5,6 +5,7 @@ import { fetchHello } from "./api/apiService";
 import { getAssets } from "./api/apiService";
 import axios from "axios";
 import UserHoldings from "./components/UserHoldings";
+import {UpdateUser} from "./components/UpdateUser";
 function App() {
   // const [testResult, setTestResult] = useState('');
   //
@@ -34,6 +35,7 @@ function App() {
       <div className="App">
         <h1>DigiVault</h1>
         <main>
+            <UpdateUser />
           <UserHoldings />
         </main>
       </div>
