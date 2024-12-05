@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export const UpdateUser = () => {
-    const [userId, setUserId] = useState('');
+    const [username, setUsername] = useState('');
     const [address, setAddress] = useState('');
     const [ticker, setTicker] = useState('');
     const [amount, setAmount] = useState('');
@@ -11,6 +11,7 @@ export const UpdateUser = () => {
 
     const addUser = async () => {
         try {
+
             // Create the new wallet holding
             const newWalletHolding = {
                 walletId: address,
@@ -24,7 +25,8 @@ export const UpdateUser = () => {
                 ]
             };
             // Check if the user exists
-            const userResponse = await axios.get(`/api/users/find/${userId}`);
+
+            const userResponse = await axios.get(`/api/users/find/${username}`);
             if (userResponse.data) {
                 // User exists, check if the walletId exists
                 const user = userResponse.data;
@@ -35,23 +37,14 @@ export const UpdateUser = () => {
                 if (existingWallet) {
                     // If wallet exists, update holdings
                     existingWallet.holdings.push(...newWalletHolding.holdings);
-                    await axios.put(`/api/users/${userId}`, user);  // Update user
+                    await axios.put(`/api/users/${username}`, user);  // Update user
                     alert('User holdings updated.');
                 } else {
                     // If wallet doesn't exist, add new wallet
                     user.cryptoWallets.push(newWalletHolding);
-                    await axios.put(`/api/users/${userId}`, user);  // Update user
+                    await axios.put(`/api/users/${username}`, user);  // Update user
                     alert('New wallet added to user.');
                 }
-            } else {
-                // User does not exist, create new user
-                const newUser = {
-                    _id: userId,
-                    cryptoWallets: [newWalletHolding]
-                };
-                console.log(newUser);
-                await axios.post('/api/users/create', newUser);  // Create user
-                alert('New user created with wallet.');
             }
         } catch (error) {
             console.error('Error while updating user:', error);
@@ -67,8 +60,8 @@ export const UpdateUser = () => {
                     <input
                         type="text"
                         placeholder="Enter User ID"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
                         type="text"

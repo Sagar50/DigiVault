@@ -6,7 +6,15 @@ import { getAssets } from "./api/apiService";
 import axios from "axios";
 import UserHoldings from "./components/UserHoldings";
 import {UpdateUser} from "./components/UpdateUser";
+import Navbar from "./components/Navigation/Navbar";
+import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
+import ProtectedRoute from './ProtectedRoute';
+import LoginRegisterPage from "./components/LoginRegistration/LoginRegisterPage";
+import {LandingPage} from "./components/LandingPage/LandingPage";
+import Footer from "./components/Footer/Footer";
+
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem('token')));
   // const [testResult, setTestResult] = useState('');
   //
   // const checkMongoConnection = () => {
@@ -30,15 +38,24 @@ function App() {
   // );
 
 
-
   return (
-      <div className="App">
-        <h1>DigiVault</h1>
-        <main>
-            <UpdateUser />
-          <UserHoldings />
-        </main>
-      </div>
+      <BrowserRouter>
+
+          <div className="App" style={{padding: '20px'}}>
+              <Navbar/>
+              <Routes>
+                  <Route path="/login" element={ <LoginRegisterPage />}  />
+                  <Route  path="/register" element={<LoginRegisterPage />} />
+                  <Route path="/home" element={ <LandingPage /> }/>
+                  <Route path="/addWallet" element={ <UpdateUser /> } />
+                  <Route path="/portfolio" element={ <UserHoldings /> } />
+
+
+              </Routes>
+              <Footer />
+          </div>
+      </BrowserRouter>
+
   );
 }
 

@@ -1,0 +1,70 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    border-bottom: 1px solid #e8edf3;
+    padding: 5px 10px;
+}
+.logoWithText {
+    display: flex;
+    align-items: center;
+
+}
+.logoWithText a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #2f7096;
+}
+.logoContainer {
+    height: 4rem;
+    margin: 0 0.5rem;
+}
+.appName {
+    margin: 0 0.5rem;
+}
+.logo {
+    height: 100%;
+    width: 100%;
+}
+.navbarContainer {
+    display: flex;
+    flex: 1 1 0;
+    justify-content: end;
+    gap: 5rem;
+}
+.navContainer {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+.navContainer a {
+    text-decoration: none;
+    color: #2f7096;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.navButtonContainer {
+    display: flex;
+    gap: 0.5rem;
+}
+.navButtonContainer button {
+    border-radius: 12px;
+    border: none;
+    background: #6dbde0;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-weight: bold;
+    height: 2.5rem;
+    font-size: 1rem;
+    width: 8rem;
+}
+
+.navButtonContainer button:hover {
+    cursor: pointer;
+}

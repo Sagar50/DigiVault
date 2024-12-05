@@ -1,0 +1,40 @@
+/* Footer styles */
+.footer {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-link {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #1da1f2; /* Twitter blue color */
+}
+
+.social-link:nth-child(2):hover {
+    color: #1877f2; /* Facebook blue color */
+}
+
+.social-link:nth-child(3):hover {
+    color: #0a66c2; /* LinkedIn blue color */
+}
+
+.copyright {
+    font-size: 14px;
+}

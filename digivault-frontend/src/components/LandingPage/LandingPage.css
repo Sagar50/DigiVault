@@ -1,0 +1,149 @@
+.landing-page {
+    display: flex;
+    padding: 2rem 6rem;
+    justify-content: center;
+}
+.div2 {
+    width: 80%;
+}
+.heroContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-items: start;
+    margin-top: auto;
+    justify-content: end;
+    height: 460px;
+    padding: 5rem 3rem 2.5rem;
+    border-radius: 1rem;
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.4) 100%
+    ),
+    url("https://cdn.usegalileo.ai/sdxl10/316ecadf-7282-4798-860f-90a2c93b29a8.png");
+}
+.heroContainer label {
+    display: flex;
+    flex-direction: column;
+    height: 3.5rem;
+    width: 100%;
+}
+
+.heroTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.heroTextContainer h1 {
+    color: white;
+    font-weight: 900;
+    font-size: 3.8rem;
+    line-height: 1.25rem;
+}
+
+.heroTextContainer h2 {
+    color: white;
+    font-weight: 450;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+.getStartedContainer {
+    text-align: left;
+}
+.getStartedHeroImage{
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    background: #6dbde0;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-weight: bold;
+    height: 3.5rem;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.getStartedHeroImage:hover{
+    cursor: pointer;
+}
+
+/*Features */
+.featureTitleCardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 5rem 1rem;
+}
+
+.featuresContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    gap: 12px;
+    padding: 0;
+
+}
+.featureCards {
+    display: flex;
+    flex: 1;
+    border-radius: 1rem;
+    border: 1px solid #d0dbe6;
+    padding: 1.2rem;
+    flex-direction: column;
+    background: #f8fafb;
+
+}
+.svgContainer {
+    color: #0e141b;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+.featureDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/*FAQ */
+.faq-container {
+    margin: 20px auto 0;
+    font-family: Arial, sans-serif;
+    padding: 0 1rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.faq-answer:hover {
+    cursor: pointer;
+}
+.faq-question:hover {
+    color: #007bff;
+}
+
+.faq-answer {
+    padding: 16px;
+    color: #555;
+    background-color: #f9f9f9;
+}

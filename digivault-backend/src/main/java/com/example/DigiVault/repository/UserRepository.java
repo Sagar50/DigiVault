@@ -6,5 +6,4 @@ import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
     // Custom query methods if needed
-    Optional<User> findByIdAndCryptoWalletsWalletId(String userId, String walletId);
 }

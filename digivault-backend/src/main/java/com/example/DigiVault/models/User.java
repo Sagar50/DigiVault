@@ -14,7 +14,8 @@ import java.util.List;
 public class User {
 
     @Id
-    @JsonProperty("_id")
-    private String id;
+    private String username; // Use username as the unique identifier (_id)
+
+    private String password; // Hashed password
     private List<CryptoWallet> cryptoWallets;
 }
