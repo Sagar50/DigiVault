@@ -1,0 +1,7 @@
+.tradingview-widget-copyright{
+    display: none !important;
+}
+iframe {
+    height: 100% !important;
+    flex: 1 1 0;
+}

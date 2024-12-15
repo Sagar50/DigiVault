@@ -17,18 +17,20 @@ const LoginRegisterPage = () => {
         const newUser = {
             username: username,
             password: password,
-            cryptoWallets: []
+            cryptoWallets: [],
+            lastUpdated: Date.now(),
         };
 
         try {
             const response = await axios.post(endpoint, newUser);
             if(response.data){
-                console.log(response.data);
                 localStorage.setItem('token', response.data);
+                localStorage.setItem('username', username);
                 if(isLogin){
                     navigate('/');
                 }else {
                     navigate('/login');
+                    window.location.reload();
                 }
             }
         } catch (error) {
@@ -38,7 +40,7 @@ const LoginRegisterPage = () => {
 
     return (
         <div className="login-register-container">
-            <h1>{isLogin ? "Login" : "Register"}</h1>
+            <h1 className="text-3xl m-4">{isLogin ? "Login" : "Register"}</h1>
             <form onSubmit={handleSubmit} className="login-register-form">
                 <input
                     type="text"

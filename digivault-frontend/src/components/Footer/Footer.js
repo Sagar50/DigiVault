@@ -1,20 +1,20 @@
 import React from 'react';
-import './Footer.css'; // Import the CSS file
+import './Footer.css';
 
 const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-content">
-                {/* Social Media Links */}
                 <div className="social-links">
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                        Twitter
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                        Facebook
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
+                    <a href="https://www.linkedin.com/in/sagarp02/" target="_blank" rel="noopener noreferrer"
+                       className="social-link">
                         LinkedIn
+                    </a>
+                    <a href="https://github.com/Sagar50" target="_blank" rel="noopener noreferrer" className="social-link">
+                        Github
+                    </a>
+                    <a href="https://portfolio-sagar50.vercel.app/" target="_blank" rel="noopener noreferrer" className="social-link">
+                        Portfolio
                     </a>
                 </div>
 

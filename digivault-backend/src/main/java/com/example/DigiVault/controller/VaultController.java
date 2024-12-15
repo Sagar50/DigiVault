@@ -12,19 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class VaultController {
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "DigiVault is running!";
-    }
-
     @Autowired
     private VaultService vaultService;
 
 
     @GetMapping("/balance/{walletId}")
     public String getAssets(@PathVariable String walletId) {
-        Balance balance = vaultService.getAssets(walletId);
-        System.out.println("Printing balance response: " + balance.getBalance());
-        return balance.getBalance();
+//        Balance balance = vaultService.getAssets(walletId);
+//        System.out.println("Printing balance response: " + balance.getBalance());
+//        return balance.getBalance();
+        return null;
     }
 }

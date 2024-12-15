@@ -1,0 +1,80 @@
+.addWalletTitle {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.description {
+    font-size: 16px;
+    margin: 0;
+}
+.cryptoNetworkContainer, .walletAddressInputContainer {
+    display: flex;
+    max-width: 480px;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+}
+
+.cryptoNetworkContainer label, .walletAddressInputContainer label{
+    display: flex;
+    flex-direction: column;
+    min-width: 10rem;
+    flex: 1;
+}
+
+.cryptoNetworkContainer select,.walletAddressInputContainer input {
+    outline: none;
+    display: flex;
+    flex: 1;
+    resize: none;
+    overflow: hidden;
+    border-radius: 12px;
+    border: none;
+    background: #0d3c58;
+    color: white;
+    padding: 1.25rem;
+    height: 3.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.cryptoNetworkContainer select:focus, .walletAddressInputContainer input:focus {
+    outline: none;
+    border: none;
+}
+
+
+.bttnContainer {
+    display: flex;
+    flex: 1;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    justify-content: end;
+}
+
+.bttnContainer button {
+    display: flex;
+    min-width: 120px;
+    max-width: 480px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 2.75rem;
+    padding: 0 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    font-size: 14px;
+}
+.bttnContainer button:hover {
+    cursor: pointer;
+}
+.cancelWalletBttn {
+    background: #243647;
+}
+.addWalletBttn {
+    background: #6cbede;
+}

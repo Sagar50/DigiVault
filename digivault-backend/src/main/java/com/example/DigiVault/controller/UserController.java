@@ -1,7 +1,6 @@
 package com.example.DigiVault.controller;
 
 import com.example.DigiVault.models.User;
-import com.example.DigiVault.repository.UserRepository;
 import com.example.DigiVault.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 

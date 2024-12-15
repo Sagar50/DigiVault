@@ -23,7 +23,18 @@ public class SecurityConfig {
                 // Disable CSRF protection (Use only for stateless APIs like JWT)
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/register", "/api/login", "/api/users/find/{username}", "/api/users/{username}").permitAll()  // Allow public access to login/register endpoints
+                        .requestMatchers("/api/register",
+                                "/api/login",
+                                "/api/users/find/{username}",
+                                "/api/users/{username}",
+                                "/updatePortfolio/{username}",
+                                "/api/db/addWallet",
+                                "/api/db/lastUpdated/{username}",
+                                "/api/db/updatePortfolio/{username}",
+                                "/api/db/exportHoldings/{username}",
+                                "/api/getCryptoData",
+                                "/api/news"
+                        ).permitAll()  // Allow public access to login/register endpoints
                         .anyRequest().authenticated()  // Other requests require authentication
                 );
 

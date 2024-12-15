@@ -31,7 +31,6 @@ header {
     width: 100%;
 }
 .navbarContainer {
-    display: flex;
     flex: 1 1 0;
     justify-content: end;
     gap: 5rem;

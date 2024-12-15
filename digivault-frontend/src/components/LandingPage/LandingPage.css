@@ -1,6 +1,6 @@
 .landing-page {
     display: flex;
-    padding: 2rem 6rem;
+    /*padding: 2rem 6rem;*/
     justify-content: center;
 }
 .div2 {
@@ -17,7 +17,6 @@
     margin-top: auto;
     justify-content: end;
     height: 460px;
-    padding: 5rem 3rem 2.5rem;
     border-radius: 1rem;
     background-image: linear-gradient(
             rgba(0, 0, 0, 0.1) 0%,
@@ -42,15 +41,11 @@
 .heroTextContainer h1 {
     color: white;
     font-weight: 900;
-    font-size: 3.8rem;
-    line-height: 1.25rem;
 }
 
 .heroTextContainer h2 {
     color: white;
     font-weight: 450;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
 }
 .getStartedContainer {
     text-align: left;
@@ -58,14 +53,10 @@
 .getStartedHeroImage{
     border-radius: 12px;
     border: none;
-    text-decoration: none;
     background: #6dbde0;
     color: white;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     font-weight: bold;
-    height: 3.5rem;
     font-size: 1.25rem;
     padding: 0.5rem 1rem;
 }
@@ -79,12 +70,12 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    padding: 5rem 1rem;
+    font-family: Arial, sans-serif;
+
 }
 
 .featuresContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
     gap: 12px;
     padding: 0;
 
