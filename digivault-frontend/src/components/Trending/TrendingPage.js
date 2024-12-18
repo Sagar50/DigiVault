@@ -138,7 +138,7 @@ const TrendingPage = () => {
                         <span>${crypto.day_volume.toLocaleString()}</span>
                     </td>
                     <td className="hidden min-[524px]:table-cell text-end px-1 py-2.5 2lg:p-2.5 bg-inherit text-gray-900">
-                        <span>${crypto.market_cap.toLocaleString()}</span>
+                        <span>{crypto.market_cap === 0.0 ? "N/A" : crypto.market_cap.toLocaleString()}</span>
                     </td>
                     <td className="hidden sm:table-cell">
                         <Sparkline data={crypto.sparkline}/>
