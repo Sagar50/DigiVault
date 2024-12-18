@@ -1,19 +1,24 @@
 table {
-    margin: 12px;
+    table-layout: fixed; /* Ensures fixed widths for all columns */
+    width: 100%; /* Optional: makes sure the table takes the full width of its container */
 }
 
 thead tr {
     background-color: #f5f5f5;
 }
 
-tbody tr {
+tbody .unexp {
     cursor: pointer;
 }
 
 tbody td {
     padding: 1rem;
+    white-space: nowrap;
 }
 
+.deleteWalletDiv:hover {
+    cursor: pointer;
+}
 .expanded-row {
     background-color: #fafafa;
 }
@@ -43,10 +48,6 @@ img {
 .tableNetworkWalletContainer {
     margin-left: 0.5rem;
 }
-.networkContainer {
-    font-size: 20px;
-    font-weight: bold;
-}
 
 .numWalletsContainer {
     font-size: 14px;
@@ -58,7 +59,7 @@ img {
     display: flex;
     align-items: center;
     margin-left: auto;
-   text-align: right;
+    text-align: right;
     width: 100%;
 }
 .totalTextContainer {
@@ -67,15 +68,10 @@ img {
 }
 .expandButtonContainer {
     display: flex;
-    margin-left: 2rem;
     width: fit-content;
     text-align: right;
-
-
 }
-.expanded-row {
-    font-size: 16px;
-}
+
 .tableRightTD {
     text-align: right; /* Aligns content inside the cell to the right */
 }

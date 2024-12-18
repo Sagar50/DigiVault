@@ -1,0 +1,46 @@
+/* Initial positioning and styles for the alert */
+.custom-alert-container {
+    position: fixed;
+    top: 10%; /* Positioned at the top of the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 15px 20px;
+    border-radius: 48px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 1; /* Initially fully visible */
+    transition: opacity 0.5s ease-out; /* Smooth transition for fading */
+}
+
+/* Keyframes for the sliding animation */
+@keyframes slideIn {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    100% {
+        top: 2%;
+        opacity: 1;
+    }
+}
+
+/* Class to trigger sliding in */
+.slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Styling for the close button and message */
+.alert-message {
+    flex-grow: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.custom-alert-container img {
+    align-self: center;
+}

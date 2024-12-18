@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 export const AddWallet = () => {
     const [address, setAddress] = useState('');
+    const [walletName, setWalletName] = useState('');
     const [selectedTicker, setSelectedTicker] = useState("");
     const [selectedApi, setSelectedApi] = useState("");
     const navigate = useNavigate();
@@ -24,13 +25,12 @@ export const AddWallet = () => {
                 ticker: selectedTicker,
                 api: selectedApi,
                 walletId: address,
+                walletName: walletName,
                 username: localStorage.getItem('username'),
             };
             await axios.post(`/api/db/addWallet`, addWalletData);
-            alert("wallet Added")
         } catch (error) {
             console.error('Error while updating user:', error);
-            alert('Error occurred while processing the request.');
         }
         navigate('/walletAdded');
     };
@@ -61,6 +61,12 @@ export const AddWallet = () => {
                         <label>
                             <input className="placeholder-white" placeholder="Wallet address" type="text"
                                    onChange={(e) => setAddress(e.target.value)}/>
+                        </label>
+                    </div>
+                    <div className="walletNameInputContainer">
+                        <label>
+                            <input className="placeholder-white" placeholder="Wallet name" type="text"
+                                   onChange={(e) => setWalletName(e.target.value)}/>
                         </label>
                     </div>
                 </div>

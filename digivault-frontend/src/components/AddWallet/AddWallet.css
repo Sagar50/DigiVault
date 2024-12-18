@@ -7,7 +7,7 @@
     font-size: 16px;
     margin: 0;
 }
-.cryptoNetworkContainer, .walletAddressInputContainer {
+.cryptoNetworkContainer, .walletAddressInputContainer, .walletNameInputContainer {
     display: flex;
     max-width: 480px;
     flex-wrap: wrap;
@@ -16,14 +16,14 @@
     padding: 0.75rem 1rem;
 }
 
-.cryptoNetworkContainer label, .walletAddressInputContainer label{
+.cryptoNetworkContainer label, .walletAddressInputContainer label, .walletNameInputContainer label{
     display: flex;
     flex-direction: column;
     min-width: 10rem;
     flex: 1;
 }
 
-.cryptoNetworkContainer select,.walletAddressInputContainer input {
+.cryptoNetworkContainer select,.walletAddressInputContainer input, .walletNameInputContainer input {
     outline: none;
     display: flex;
     flex: 1;
@@ -39,7 +39,7 @@
     line-height: 1.5rem;
 }
 
-.cryptoNetworkContainer select:focus, .walletAddressInputContainer input:focus {
+.cryptoNetworkContainer select:focus, .walletAddressInputContainer input:focus, .walletNameInputContainer input:focus {
     outline: none;
     border: none;
 }

@@ -26,9 +26,9 @@ const Portfolio = () => {
     function formatDate(dateString) {
         const date = new Date(dateString);
         return date.toLocaleString('en-US', {
-            weekday: 'long', // e.g., "Thursday"
+            weekday: 'short', // e.g., "Thursday"
             year: 'numeric', // e.g., "2024"
-            month: 'long', // e.g., "December"
+            month: 'short', // e.g., "December"
             day: 'numeric', // e.g., "6"
             hour: '2-digit', // e.g., "03"
             minute: '2-digit', // e.g., "16"
@@ -79,16 +79,16 @@ const Portfolio = () => {
     };
     return (
         <div className="portfolioWrapper gap-y-3 mt-2">
-            <div className="flex justify-between">
-                <h2 className="text-3xl ml-[12px]">{username.charAt(0).toUpperCase() + username.slice(1)}'s Crypto Holdings:</h2>
-                <button className="border border-[#6bbede] bg-[#6bbede] text-white text-lg py-2 px-4 rounded-2xl font-semibold" onClick={downloadUserData}>
+            <div className="sm:flex justify-between">
+                <h2 className="text-xl sm:text-3xl ml-[12px] mb-4 sm:mb-0">{username.charAt(0).toUpperCase() + username.slice(1)}'s Crypto Holdings:</h2>
+                <button className="border border-[#6bbede] bg-[#6bbede] text-white text-sm sm:text-lg py-2 px-4 rounded-2xl font-semibold" onClick={downloadUserData}>
                     <img className="inline w-5 h-5" src={exprt} alt="export holding data" />
                     Export Data</button>
             </div>
 
-            <div className="flex gap-x-4 ml-[12px]">
-                <p className="text-lg">Last Updated -</p>
-                <p className="text-lg">{lastUpdated}</p>
+            <div className="flex gap-x-4 ml-[12px] text-sm sm:text-lg">
+                <p className="">Last Updated -</p>
+                <p className="">{lastUpdated}</p>
                 <img src={refresh} alt="refresh" className="h-4 w-4 my-auto cursor-pointer hover:h-5 hover:w-5 transition-all ease-linear" onClick={updateHoldings}/>
             </div>
             {data && <PortfolioTable cryptoWallets={data["cryptoWallets"]} />}
