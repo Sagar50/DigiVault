@@ -7,5 +7,6 @@ public class AddWalletData {
     private String ticker;
     private String api;
     private String walletId;
+    private String walletName;
     private String username;
 }

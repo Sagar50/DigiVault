@@ -33,7 +33,8 @@ public class SecurityConfig {
                                 "/api/db/updatePortfolio/{username}",
                                 "/api/db/exportHoldings/{username}",
                                 "/api/getCryptoData",
-                                "/api/news"
+                                "/api/news",
+                                "/api/db/remove/{user}/{walletId}"
                         ).permitAll()  // Allow public access to login/register endpoints
                         .anyRequest().authenticated()  // Other requests require authentication
                 );

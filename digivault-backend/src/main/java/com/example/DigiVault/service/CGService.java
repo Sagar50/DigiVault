@@ -73,12 +73,11 @@ public class CGService {
             cgResponse.setSparkline(sparkline); // Set the sparkline
 
 
-            cgResponse.setHourVolumeChange((Double) data.get("price_change_percentage_1h_in_currency"));
+            cgResponse.setHourVolumeChange(data.get("price_change_percentage_1h_in_currency") != null ? (Double) data.get("price_change_percentage_1h_in_currency") : 0.0);
 
-            // Default value if null
-            cgResponse.setDayVolumeChange((Double) data.get("price_change_percentage_24h_in_currency"));
+            cgResponse.setDayVolumeChange(data.get("price_change_percentage_24h_in_currency") != null ? (Double) data.get("price_change_percentage_24h_in_currency") : 0.0);
 
-            cgResponse.setSevenDayVolumeChange((Double) data.get("price_change_percentage_7d_in_currency"));
+            cgResponse.setSevenDayVolumeChange(data.get("price_change_percentage_7d_in_currency") != null ? (Double) data.get("price_change_percentage_7d_in_currency") : 0.0);
             return cgResponse;
         }).toList();
     }

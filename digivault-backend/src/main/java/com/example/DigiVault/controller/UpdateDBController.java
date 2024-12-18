@@ -50,6 +50,17 @@ public class UpdateDBController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @DeleteMapping("/remove/{username}/{walletId}")
+    public ResponseEntity<String> removeWallet(@PathVariable String username, @PathVariable String walletId){
+        boolean isDeleted = updateDBService.deleteWalletByUserAndId(username, walletId);
+
+        if (isDeleted) {
+            return ResponseEntity.ok("Wallet deleted successfully");
+        } else {
+            return ResponseEntity.status(404).body("Wallet not found");
+        }
+    }
+
     @GetMapping("/exportHoldings/{username}")
     public void exportUserToCSV(@PathVariable String username, HttpServletResponse response) throws IOException {
         System.out.println("In exportUserToCSV+_____________________________________");

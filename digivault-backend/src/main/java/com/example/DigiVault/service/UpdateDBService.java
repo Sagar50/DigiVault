@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UpdateDBService {
@@ -41,6 +42,7 @@ public class UpdateDBService {
             Holding newHolding = vaultService.getAssets(cryptoWallet.getWalletId(), cryptoWallet.getHoldings().getTicker(), cryptoWallet.getHoldings().getApiString(), cryptoWallet.getHoldings().getPrice());
             CryptoWallet updatedWallet = new CryptoWallet();
             updatedWallet.setWalletId(cryptoWallet.getWalletId());
+            updatedWallet.setWalletName(cryptoWallet.getWalletName());
             updatedWallet.setHoldings(newHolding);
             updatedWallets.add(updatedWallet);
         }
@@ -59,7 +61,7 @@ public class UpdateDBService {
         if (!walletExists) {
             CryptoWallet cryptoWallet = new CryptoWallet();
             cryptoWallet.setWalletId(addWalletData.getWalletId());
-
+            cryptoWallet.setWalletName(addWalletData.getWalletName());
             cryptoWallet.setHoldings(holdings);
 
             user.getCryptoWallets().add(cryptoWallet);
@@ -68,5 +70,28 @@ public class UpdateDBService {
         }
 
         return userRepository.save(user);
+    }
+
+    public boolean deleteWalletByUserAndId(String userId, String walletId) {
+        User user = userRepository.findById(userId).orElse(null);
+
+        if (user != null) {
+            // Filter out the wallet to be deleted
+            List<CryptoWallet> updatedWallets = user.getCryptoWallets().stream()
+                    .filter(wallet -> !wallet.getWalletId().equals(walletId))
+                    .collect(Collectors.toList());
+
+            // Check if the wallet list has changed
+            if (updatedWallets.size() != user.getCryptoWallets().size()) {
+                // Update the user's wallet list
+                user.setCryptoWallets(updatedWallets);
+
+                // Save the updated user back to the database
+                userRepository.save(user);
+                return true;
+            }
+        }
+
+        return false;
     }
 }
