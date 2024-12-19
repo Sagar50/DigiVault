@@ -97,4 +97,27 @@ public class UpdateDBController {
             throw new RuntimeException(e);
         }
     }
+
+    @PutMapping("updateName/{user}/{walletId}/{newWalletName}")
+    public ResponseEntity<User> updateWalletName(@PathVariable String user, @PathVariable String walletId, @PathVariable String newWalletName){
+        // Find the user by username
+        User existingUser = userRepository.findById(user)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Find the wallet by ID in the user's wallets
+        CryptoWallet walletToUpdate = existingUser.getCryptoWallets().stream()
+                .filter(wallet -> wallet.getWalletId().equals(walletId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Wallet not found"));
+
+        // Update the wallet name
+        walletToUpdate.setWalletName(newWalletName);
+
+        // Save the user with updated wallet information
+        User updatedUser = userRepository.save(existingUser);
+
+        return ResponseEntity.ok(updatedUser);
+    }
 }
+
+
