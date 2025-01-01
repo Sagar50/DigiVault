@@ -17,6 +17,7 @@ import TrendingPage from "./components/Trending/TrendingPage";
 import 'font-awesome/css/font-awesome.min.css';
 import News from "./components/News/News";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem('token')));
@@ -40,6 +41,7 @@ function App() {
               </Routes>
               <Footer />
           </div>
+          <SpeedInsights />
           <Analytics />
       </BrowserRouter>
 
