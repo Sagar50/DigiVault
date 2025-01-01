@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './LandingPage.css';
 import notif from '../../res/notif.svg';
 import CoinGeckoWidget from "../Animated/CoinGeckoWidget";

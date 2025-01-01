@@ -9,7 +9,7 @@ const TrendingPage = () => {
 
     const fetchCryptoData = async (page, rowsPerPage) => {
         try {
-            const response = await axios.get(`/api/getCryptoData?page=${page}&numRows=${rowsPerPage}`); // Pass rows as the query param
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/getCryptoData?page=${page}&numRows=${rowsPerPage}`); // Pass rows as the query param
             setCryptos(response.data);
         } catch (error) {
             console.error("Error fetching crypto data:", error);
@@ -92,7 +92,7 @@ const TrendingPage = () => {
                             <img src={crypto.img} alt={crypto.name}
                                  className="mr-2 !h-6 w-6 object-fill"/>
                             <div className="flex flex-col 2lg:flex-row items-start 2lg:items-center">
-                                {crypto.name} ({crypto.symbol.toUpperCase()})
+                                {crypto.name.length > 18 ? `${crypto.name.substring(0, 18)}...` : crypto.name} ({crypto.symbol.toUpperCase()})
                             </div>
 
                         </div>

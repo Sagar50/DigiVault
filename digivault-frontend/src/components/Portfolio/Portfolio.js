@@ -1,9 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Portfolio.css';
 import PortfolioTable from "./PortfolioTable";
 import refresh from "../../res/refresh.svg";
 import exprt from '../../res/export.svg';
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Portfolio = () => {
     const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -14,7 +16,7 @@ const Portfolio = () => {
         fetchHoldings();
         const fetchLastUpdated = async () => {
             try {
-                const lastUpdate = await axios.get(`/api/db/lastUpdated/${username}`);
+                const lastUpdate = await axios.get(`${backendUrl}/api/db/lastUpdated/${username}`);
                 setLastUpdated(formatDate(lastUpdate.data));
             } catch (error) {
                 console.log(error);
@@ -39,8 +41,9 @@ const Portfolio = () => {
 
     const fetchHoldings = async () => {
         try {
-            const response = await axios.get(`/api/users/find/${username}`);
+            const response = await axios.get(`${backendUrl}/api/users/find/${username}`);
             setData(response.data);
+            console.log(response.data);
         } catch {
             console.log('Holdings could not be fetched.');
 
@@ -48,7 +51,7 @@ const Portfolio = () => {
     };
     const updateHoldings = async () => {
         try {
-            const response = await axios.put(`/api/db/updatePortfolio/${username}`);
+            const response = await axios.put(`${backendUrl}/api/db/updatePortfolio/${username}`);
             setLastUpdated(formatDate(response.data));
 
         } catch {
@@ -58,7 +61,7 @@ const Portfolio = () => {
 
     const downloadUserData = async () => {
         try {
-            const response = await axios.get(`/api/db/exportHoldings/${username}`, { responseType: 'blob' });
+            const response = await axios.get(`${backendUrl}/api/db/exportHoldings/${username}`, { responseType: 'blob' });
 
             // Create a URL for the blob data
             const url = window.URL.createObjectURL(response.data);

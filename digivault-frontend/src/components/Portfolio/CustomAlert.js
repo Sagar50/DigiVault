@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./CustomAlert.css"; // Import the CSS
 import close from "../../res/close.svg";
 

@@ -10,21 +10,27 @@ import edit from '../../res/edit.svg';
 
 const PortfolioTable = ({cryptoWallets}) => {
     // Group wallets by ticker
-    const [walletsToUse, setWalletsToUse] = useState(cryptoWallets);
+    const [walletsToUse, setWalletsToUse] = useState(cryptoWallets || []);
     const [isAlertVisible, setAlertVisible] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [newWalletName, setNewWalletName] = useState({});
     const [editingMode, setEditingMode] = useState(null); // Use walletId for editing mode
     const inputRefs = useRef({}); // Store refs for each wallet input field
 
-    const groupedWallets = walletsToUse.reduce((acc, wallet) => {
-        const holding = wallet.holdings; // Since holdings is now an object, not an array
-        if (!acc[holding.ticker]) {
-            acc[holding.ticker] = [];
-        }
-        acc[holding.ticker].push(wallet);
-        return acc;
-    }, {});
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+    const groupedWallets = Array.isArray(walletsToUse) && walletsToUse.length > 0
+        ? walletsToUse.reduce((acc, wallet) => {
+            const holding = wallet.holdings;
+            if (!acc[holding.ticker]) {
+                acc[holding.ticker] = [];
+            }
+            acc[holding.ticker].push(wallet);
+            return acc;
+        }, {})
+        : {}; // Default to an empty object if walletsToUse is not valid
+
+
     useEffect(() => {
         if (isAlertVisible) {
             const timer = setTimeout(() => {
@@ -52,7 +58,7 @@ const PortfolioTable = ({cryptoWallets}) => {
     const handleDeleteWallet = async (walletId) => {
         const user = localStorage.getItem("username");
         try {
-            const response = await axios.delete(`/api/db/remove/${user}/${walletId}`);
+            const response = await axios.delete(`${backendUrl}/api/db/remove/${user}/${walletId}`);
             if (response.status === 200) {
                 // Update the state to remove the deleted wallet
                 setWalletsToUse((prevWallets) => prevWallets.filter((wallet) => wallet.walletId !== walletId));
@@ -86,7 +92,7 @@ const PortfolioTable = ({cryptoWallets}) => {
     const changeWalletName = async (walletId) => {
         const user = localStorage.getItem("username");
         try {
-            const response = await axios.put(`/api/db/updateName/${user}/${walletId}/${newWalletName[walletId]}`, {
+            const response = await axios.put(`${backendUrl}/api/db/updateName/${user}/${walletId}/${newWalletName[walletId]}`, {
                 newName: newWalletName[walletId],
             });
 

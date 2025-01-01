@@ -28,7 +28,7 @@ export const AddWallet = () => {
                 walletName: walletName,
                 username: localStorage.getItem('username'),
             };
-            await axios.post(`/api/db/addWallet`, addWalletData);
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/db/addWallet`, addWalletData);
         } catch (error) {
             console.error('Error while updating user:', error);
         }
@@ -82,7 +82,7 @@ export const AddWallet = () => {
                 </div>
             </div>
             <div className="imgDiv bg-cover ml-auto my-auto hidden md:block">
-                <img src={addWalletImage} alt="add wallet image"
+                <img src={addWalletImage} alt="add wallet"
                      className="h-[50vw] w-[560px] lg:h-[80%] xl:h-full xl:w-full"/>
             </div>
         </div>

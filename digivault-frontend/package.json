@@ -13,21 +13,22 @@
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "react-sparklines": "^1.7.0",
+    "serve": "^14.2.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start serve -s build -l 80",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+  "proxy": "https://digivault-backend-164541878928.us-central1.run.app",
   "browserslist": {
     "production": [
       ">0.2%",

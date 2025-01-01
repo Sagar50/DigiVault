@@ -12,7 +12,9 @@ const LoginRegisterPage = () => {
         e.preventDefault();
 
         // Select the endpoint based on the isLogin state
-        const endpoint = isLogin ? "/api/login" : "/api/register";
+        const endpoint = isLogin
+            ? `${process.env.REACT_APP_BACKEND_URL}/api/login`
+            : `${process.env.REACT_APP_BACKEND_URL}/api/register`;
 
         const newUser = {
             username: username,
